@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace Estruturas
 {
@@ -45,48 +46,117 @@ namespace Estruturas
         }
 
         private void btnWhile_Click(object sender, EventArgs e)
+            // Laço de repetição que testa a condição no início
+            // while (condição for verdadeira) {faça}
+            
         {
             // Laço de repetição que testa a condição no início
             int num = 0;
-            int i = 8;
             lsbMostra.Items.Clear();
 
             //Testa a condição do início
-            while (num <= 10)
+            while (num <= 100)
             { //condição
 
                 // Bloco de execução
-                lsbMostra.Items.Add(i + " x " + num + " = " + i*num);
+                lsbMostra.Items.Add(num + " x " + num + " = " + num*num);
                 num++; //num + 1, ou num=+ 1
+                
 
             }
         }
 
+           
+            
+        
 
-        private void btnDoWhile_Click(object sender, EventArgs e)
-        {
-            int a = 7;
-            int x = 0;
+        private void btnDoWhile_Click(object sender, EventArgs e) {
+            int a = 10;
+            int x = 1;
+            int fatorial = 1;
             lsbMostra.Items.Clear();
-            // Testa a condição no final
-            do
-            {
-                lsbMostra.Items.Add(a + " x " + x + " = " + a * x);
-                x++;
-            }
-            while (x <= 10);
+
+        do
+        {
+            fatorial = fatorial * x;
+            lsbMostra.Items.Add(x + "! = " + fatorial);
+            x++;
+        }
+            while (x <= a);
 
         }
 
         private void btnFor_Click(object sender, EventArgs e)
         {
-            lsbMostra.Items.Clear();
+          lsbMostra.Items.Clear();
 
+        int[] numeros = { 170, 121, 22, 787, 9 }; // os 5 números já setados
 
-            int w = 5;
-            for (int a = 0; a <= 10; a++) 
+            int maior = numeros[0];
+            int menor = numeros[0];
+
+            for (int a = 0; a < numeros.Length; a++)
             {
-                lsbMostra.Items.Add(w + " x " + a + " = "+ w*a);
+                    if (numeros[a] > maior)
+                        {
+                             maior = numeros[a];
+                        }
+
+                    if (numeros[a] < menor)
+                        {
+                            menor = numeros[a];
+                        }
+            }
+
+            lsbMostra.Items.Add("Maior número: " + maior);
+            lsbMostra.Items.Add("Menor número: " + menor);
+        }
+
+        private void btnForEach_Click(object sender, EventArgs e)
+        {
+            // for each
+            // lista de personagens de amphoreus (HonkaiStarRail)
+
+            string[] HeroisBangas = ["Zetian", "Angela", "Estes", "Floryn", "Pharsa", "Aurora", "Xavier", "Eudora", "Saber", "Miya", "Rafaela", "Guinevere"]; 
+    
+            foreach (string nomes in  HeroisBangas) {
+                Console.WriteLine(nomes);
+            }
+        }
+        private void btnBreak_Click(object sender, EventArgs e)
+        {
+            int cont = 5;
+            lsbMostra.Items.Clear();
+            double fatorial = 1;
+
+            while (cont <= 5 & cont >= 1)
+            {
+                fatorial *= cont;
+                cont--;
+                if (cont == 2)
+                {
+                    break;
+                }
+                lsbMostra.Items.Add(fatorial.ToString());
+            }
+        }
+
+        private void btnContinue_Click(object sender, EventArgs e)
+        {
+            int cont = 5;
+            lsbMostra.Items.Clear();
+            double fatorial = 1;
+
+            while (cont <= 5 & cont >= 1)
+            {
+                fatorial *= cont;
+                cont--;
+
+                if (cont == 2)
+                {
+                    continue;
+                }
+                lsbMostra.Items.Add(fatorial.ToString());
             }
         }
     }
